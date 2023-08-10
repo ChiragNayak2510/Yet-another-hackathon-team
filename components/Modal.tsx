@@ -52,11 +52,11 @@ const Modal : React.FC<ModalProps>  = ({
                     </button>
                 </div>
                 <div className="relative p-10 flex-auto">
-                {/*Body*/}
+                {body}
                 </div>
-                {/*Footer*/}
                 <div className="flex flex-col gap-2 p-10">
                     <Button label={actionLabel} secondary fullWidth large onClick={handleSubmit}/>
+                    {footer}
                 </div>
             </div>
         </div>

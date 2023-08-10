@@ -14,6 +14,7 @@ const Input:React.FC<InputProps> = ({
     onChange
 })=>{
         return(
+            <>
             <input 
                 disabled={disabled}
                 onChange={onChange}
@@ -38,6 +39,7 @@ const Input:React.FC<InputProps> = ({
                     disabled:cursor-not-allowed
                     "
                     />
+                </>
         )
 
 }
