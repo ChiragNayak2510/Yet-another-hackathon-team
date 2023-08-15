@@ -28,7 +28,9 @@ const RegisterModal = () =>{
     },[isLoading,registerModal,loginModal]);
 
     const onSubmit = useCallback(async () =>{
+        console.log(email,password,username,name)
         try{
+            
             setIsLoading(true);
             await axios.post('/api/register',{
                 email,
@@ -73,6 +75,7 @@ const RegisterModal = () =>{
             />
             <Input
             placeholder="Password"
+            type = "password"
             onChange={(e)=>setPassword(e.target.value)}
             value = {password}
             disabled = {isLoading}
@@ -101,7 +104,7 @@ const RegisterModal = () =>{
         title = "Create an account"
         actionLabel="Register"
         onClose={registerModal.onClose}
-        onSubmit={onSubmit}
+        onSubmit={()=>onSubmit()}
         body = {bodyContent}
         footer = {footerContent}
         />

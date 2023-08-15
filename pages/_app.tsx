@@ -7,14 +7,15 @@ import Layout from '@/components/Layout'
 // import Modal from '@/components/Modal'
 import LoginModal from '@/components/modals/LoginModal'
 import RegisterModal from '@/components/modals/RegisterModal'
-import Input from '@/components/Input'
+import EditModal from '@/components/modals/EditModal'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
     {/* <Modal isOpen title="test modal" actionLabel="Submit"/> */}
     <SessionProvider session = {pageProps.session}>
-      <Toaster/>
+    <Toaster/>
+    <EditModal/>
     <RegisterModal/>
     <LoginModal/>
     <Layout>
