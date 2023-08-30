@@ -1,4 +1,4 @@
-interface ButtonProps{
+    interface ButtonProps{
     label:string,
     secondary?:boolean,
     fullWidth?:boolean,
