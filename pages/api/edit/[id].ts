@@ -9,9 +9,7 @@ export default async function handler(
         return res.status(405).end();
     }
     try{
-            // const {id} = router.query
         const {id} = req.query
-        // const {currentUser} = await serverAuth(req)
         const {name,username,bio,profileImage,coverImage} = req.body;
         if(!name || !username){
             throw new Error('Missing fields');

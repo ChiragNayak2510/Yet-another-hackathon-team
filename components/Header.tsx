@@ -1,4 +1,4 @@
-import { Head } from "next/document";
+
 import { useRouter } from "next/router";
 import { useCallback } from "react";
 import { BiArrowBack } from "react-icons/bi";

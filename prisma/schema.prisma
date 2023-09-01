@@ -35,10 +35,9 @@ model Post{
   id String @id @default(auto()) @map("_id") @db.ObjectId
   body String
   createdAt DateTime @default(now())
-  updatedAt String @db.ObjectId
+  updatedAt DateTime @updatedAt @default(now())
   likedIds String[] @db.ObjectId
   userId String @db.ObjectId
-
   user User @relation(fields: [userId],references:[id],onDelete:Cascade)
   comments Comment[]
 }

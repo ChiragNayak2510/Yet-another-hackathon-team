@@ -4,10 +4,7 @@ import prisma from '@/libs/prismadb'
 
 const serverAuth = async(req : NextApiRequest) => {
     const session = await getSession({req});
-    console.log(req.method);
-    console.log(session)
     if(!session?.user?.email){
-        console.log("I am"+ session?.user)
         throw new Error('Invalid credentials');
     }
 
