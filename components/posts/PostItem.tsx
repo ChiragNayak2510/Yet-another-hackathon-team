@@ -72,7 +72,7 @@ const PostItem:React.FC<PostItemProps> = ({userId,data
                     md:block"
                     >@{data.user.username}</span>
                     <span className="text-neutral-500 text sm">
-                        {createdAt}
+                        {createdAt} ago
                     </span>
                    </div>
                    <div className="text-white mt-1 ml-2">

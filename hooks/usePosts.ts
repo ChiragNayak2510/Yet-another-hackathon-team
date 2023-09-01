@@ -7,7 +7,6 @@ const usePosts = (userId : string) => {
             error, 
             isLoading, 
             mutate} = useSWR(url,fetcher);
-            console.log(data)
     return {
         data,error,isLoading,mutate}
 };
