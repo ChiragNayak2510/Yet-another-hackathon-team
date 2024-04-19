@@ -14,7 +14,7 @@ const Postfeed: React.FC<PostfeedProps> = ({ userId }) => {
         <>
             {posts?.posts?.map((post: Record<string, any>) => (
                 <div onClick={()=>{setLiked(true)}}>
-                <PostItem key={post.id} data={post} userId={userId} liked={liked}/>
+                <PostItem key={post.id} data={post} userId={userId}/>
                 </div>
             ))}
         </>
