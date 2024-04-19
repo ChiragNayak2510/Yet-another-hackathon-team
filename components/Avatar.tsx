@@ -16,7 +16,7 @@ const Avatar: React.FC<AvatarProps> =({
     const { data : fetchedUser} = useUser(userId);
     const onClick = (event:any)=>{
         event.stopPropagation();
-        const url = `users/${userId}`;
+        const url = `/users/${userId}`;
         router.push(url)
     }
 

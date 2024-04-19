@@ -10,8 +10,9 @@ export default async function handler(
     }
 
     try{
+        console.log("here",req.body)
         const {userId} = req.body;
-        const {currentUser} = await serverAuth(req);
+        const {currentUser} = await serverAuth(req)
 
         if(!userId || typeof userId !== 'string'){
             throw new Error("Invalid ID");
