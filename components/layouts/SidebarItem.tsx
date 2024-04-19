@@ -2,7 +2,7 @@ import useCurrentUser from "@/hooks/useCurrentUser";
 import useLoginModal from "@/hooks/useLoginModal";
 import { signOut } from "next-auth/react";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useCallback } from "react";
 import { IconType } from "react-icons/lib";
 
 interface SidebarItemProps{

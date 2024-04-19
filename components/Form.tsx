@@ -94,7 +94,7 @@ const Form:React.FC<FormProps> = (
                             mb-4
                             font-bold
                             ">
-                                Welcome to Skittles
+                                Welcome to X(Formerly twitter)
                             </h1>
                         <div className="flex flex-row items-center justify-center gap-4">
                             <Button label="Login" onClick={loginModal.onOpen}/>
