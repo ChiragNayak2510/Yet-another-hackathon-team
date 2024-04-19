@@ -22,10 +22,10 @@ const useFollow = (userId : String) =>{
         try{
             let request;
             if(isFollowing){
-                request = () => axios.delete('/api/follow',{data : {userId}});
+                request = () => axios.delete(`/api/follow?userId=${userId}&currentUser=${currentUser.id}`);
             }
             else{
-                request = () => axios.post('/api/follow',{data:{userId}});
+                request = () => axios.post('/api/follow',{data:{userId,currentUser}});
             }
             await request();
             mutateCurrentUser();

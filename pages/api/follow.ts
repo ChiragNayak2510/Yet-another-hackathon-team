@@ -10,10 +10,11 @@ export default async function handler(
     }
 
     try{
-        console.log("here",req.body)
-        const {userId} = req.body;
-        const {currentUser} = await serverAuth(req)
 
+        
+        if(req.method==='POST'){
+            const {userId,currentUser} = req.body.data;
+        
         if(!userId || typeof userId !== 'string'){
             throw new Error("Invalid ID");
         }
@@ -28,22 +29,50 @@ export default async function handler(
         }
 
         let updatedFollowingIds = [...(user.followingIds || [])];
-        if(req.method==='POST'){
             updatedFollowingIds.push(userId)
+        
+            const updatedUser = await prisma?.user.update({
+                where : {
+                    id : currentUser.id
+                },
+                data : {
+                    followingIds : updatedFollowingIds
+                }
+            });
+            return res.status(200).json(updatedUser)
         }
 
         if(req.method==='DELETE'){
-            updatedFollowingIds = updatedFollowingIds.filter(followingId => followingId !== userId)
+            const userId = req.query.userId;
+            const currentUser = req.query.currentUser as string;
+            console.log(currentUser)
+        if(!userId || typeof userId !== 'string'){
+            throw new Error("Invalid ID");
         }
-        const updatedUser = await prisma?.user.update({
+
+        const user = await prisma?.user.findUnique({
             where : {
-                id : currentUser.id
-            },
-            data : {
-                followingIds : updatedFollowingIds
+                id:userId
             }
-        });
-        return res.status(200).json(updatedUser)
+        })
+        if(!user){
+            throw new Error("Invalid ID")
+        }
+
+        let updatedFollowingIds = [...(user.followingIds || [])];
+            updatedFollowingIds = updatedFollowingIds.filter(followingId => followingId !== userId)
+            const updatedUser = await prisma?.user.update({
+                where : {
+                    id : currentUser
+                },
+                data : {
+                    followingIds : updatedFollowingIds
+                }
+            });
+            return res.status(200).json(updatedUser)
+        }
+        
+        
     }
     catch(Error){
         console.log(Error)

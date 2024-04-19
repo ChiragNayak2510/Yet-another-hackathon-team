@@ -4,7 +4,7 @@ import {formatDistanceToNowStrict } from "date-fns";
 import { useRouter } from "next/router";
 import { useMemo } from "react";
 import Avatar from "../Avatar";
-import { AiOutlineHeart, AiOutlineMessage } from "react-icons/ai";
+import { AiOutlineHeart} from "react-icons/ai";
 
 interface PostItemProps{
     data: Record<string,any>;
@@ -19,7 +19,7 @@ const PostItem:React.FC<PostItemProps> = ({userId,data
     const{data:currentUser} = useCurrentUser();
     const goToUser = (event:any)=>{
         event.stopPropagation()
-        router.push(`/user/${data.user.id}`);
+        router.push(`/users/${data.user.id}`);
     }
 
     const goToPost = ()=>{
@@ -78,37 +78,21 @@ const PostItem:React.FC<PostItemProps> = ({userId,data
                    <div className="text-white mt-1 ml-2">
                     {data.body}
                    </div>
-                   <div className="
-                   flex 
-                   flex-row
-                   items-center
-                   text-neutral-500
-                   gap-2
-                   cursor-pointer
-                   transition
-                   hover:text-sky-500
-                   ml-2">
-                    <AiOutlineMessage size={20}/>
-                    <p>
-                        {data.comments?length : 0}
-                    </p>
-
+                   
                     <div className="
                    flex 
                    flex-row
                    items-center
                    text-neutral-500
-                   gap-2
                    cursor-pointer
                    transition
                    hover:text-sky-500
-                   ml-6
+                   ml-2
                    ">
                     <AiOutlineHeart size={20}/>
                     <p>
                         {data.comments?length : 0}
                     </p>
-                   </div>
                    </div>
                    
                 </div>

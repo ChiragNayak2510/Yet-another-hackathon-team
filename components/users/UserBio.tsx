@@ -31,7 +31,7 @@ const UserBio : React.FC<UserBioProps> = ({userId}) =>{
                 {currentUser?.id===userId? (
                 <Button secondary label="Edit" onClick={editModal.onOpen} />):(
                     <Button onClick = {toggleFollow}
-                    label = {isFollowing?"UnFollow":"Follow"}
+                    label = {isFollowing?"Unfollow":"Follow"}
                     secondary = {!isFollowing}
                     outline = {isFollowing}
                     />
