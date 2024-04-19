@@ -2,9 +2,9 @@ import useCurrentUser from "@/hooks/useCurrentUser";
 import useLoginModal from "@/hooks/useLoginModal";
 import {formatDistanceToNowStrict } from "date-fns";
 import { useRouter } from "next/router";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import Avatar from "../Avatar";
-import { AiOutlineHeart} from "react-icons/ai";
+import { AiOutlineHeart,AiFillHeart} from "react-icons/ai";
 
 interface PostItemProps{
     data: Record<string,any>;
@@ -15,21 +15,13 @@ const PostItem:React.FC<PostItemProps> = ({userId,data
 }) =>{
     const router = useRouter();
     const loginModal= useLoginModal();
-
+    const [liked,setLiked] = useState(false)
     const{data:currentUser} = useCurrentUser();
     const goToUser = (event:any)=>{
         event.stopPropagation()
         router.push(`/users/${data.user.id}`);
     }
 
-    const goToPost = ()=>{
-        router.push(`/user/${data.id}`);
-    }
-
-    const onLike = (event:any) =>{
-        event.stopPropagation()
-        loginModal.onOpen;
-    }
 
     const createdAt = useMemo(()=>{
         if(!data?.createdAt){
@@ -40,7 +32,6 @@ const PostItem:React.FC<PostItemProps> = ({userId,data
     return(
         
         <div 
-        onClick = {goToPost}
         className="
         border-b-[1px]
         border-neutral-800
@@ -88,11 +79,15 @@ const PostItem:React.FC<PostItemProps> = ({userId,data
                    transition
                    hover:text-sky-500
                    ml-2
-                   ">
-                    <AiOutlineHeart size={20}/>
-                    <p>
-                        {data.comments?length : 0}
-                    </p>
+                   "
+                   onClick={()=>{setLiked(!liked)}}
+                   >
+                    {
+                        !liked&&<AiOutlineHeart size={20}/>
+                    }
+                    {
+                        liked&&<AiFillHeart size={20} color="red"/>
+                    }
                    </div>
                    
                 </div>
