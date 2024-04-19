@@ -4,7 +4,7 @@ import {formatDistanceToNowStrict } from "date-fns";
 import { useRouter } from "next/router";
 import { useMemo, useState } from "react";
 import Avatar from "../Avatar";
-import { AiOutlineHeart, AiFillHeart} from "react-icons/ai";
+import { AiFillHeart, AiOutlineHeart} from "react-icons/ai";
 
 interface PostItemProps{
     data: Record<string,any>;
@@ -22,6 +22,7 @@ const PostItem:React.FC<PostItemProps> = ({userId,data
         router.push(`/users/${data.user.id}`);
     }
 
+    
     const createdAt = useMemo(()=>{
         if(!data?.createdAt){
             return null;
@@ -81,8 +82,7 @@ const PostItem:React.FC<PostItemProps> = ({userId,data
                    hover:text-sky-500
                    ml-2
                    "
-                   onClick = {()=>{setLiked(!liked)}}
-                   >
+                   onClick={()=>{setLiked(!liked)}}>
                     {!liked && <AiOutlineHeart size={20}/>}
                     {liked && <AiFillHeart size={20} color="red"/>}
                    </div>
